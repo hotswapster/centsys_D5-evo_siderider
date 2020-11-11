@@ -55,3 +55,19 @@ From Left/Right or Top/Bottom
 | 21  |        Charger        | Power supply             |                  |       |
 
 ![](/pictures/existing_controller.jpg)
+
+### I/O on GPRS unit
+From Left/Right
+
+| #   | Description | Type             | Connector      | Group |
+|:--- |:-----------:|:---------------- |:-------------- | ----- |
+| 1   |   Relay 2   | dry contact  N/O | 3 pin white #1 | 1     |
+| 2   |   Relay 2   | dry contact COM  | 3 pin white #2 | 1     |
+| 3   |   Relay 2   | dry contact N    | 3 pin white #3 | 1     |
+| 4   |   Relay 1   | dry contact  N/O | 3 pin white #1 | 2     |
+| 5   |   Relay 1   | dry contact COM  | 3 pin white #2 | 2     |
+| 6   |   Relay 1   | dry contact N    | 3 pin white #3 | 2     |
+| 7   |    Power    | 230VAC Phase     | 2 pin white    | 3     |
+| 8   |    Power    | 230VAC Neutral   | 2 pin white    | 3     |
+
+![](/pictures/existing_GPRS.jpeg)
