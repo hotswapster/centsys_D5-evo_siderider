@@ -75,6 +75,12 @@ From Left/Right
 ![](/pictures/existing_GPRS.jpeg)
 
 ## Interfacing
+
+### Serial
+There is a serial port underneath the circuit board however no investigation has been done with this yet. After standard wiring has been used for this automation, the serial port may be investigated further.
+![UART](/pictures/existing_pcb_serial_port_crop.jpeg)
+
+
 ### Gate Status
 
 The gate status is indicated by an LED. THis LED is also wired to output as the table above. Wiring this io a micro controller can decode the flashes into the sates shown in the table below:
