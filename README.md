@@ -115,7 +115,7 @@ Communications to house required.
 | Doorbell - Door | Input  |     |
 | TX              | UART1  |     |
 | RX              | UART1  |     |
-| Disable Inputs  | output |     |
-| Lock open       | output |     |
+| Disable Inputs  | Output |     |
+| Lock open       | Output |     |
 | trigger         | Output |     |
 | light           | Output |     |
