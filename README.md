@@ -7,7 +7,7 @@ Work in progress
 
 # Goals
 - [ ] Open gate remotely
-- [ ] Hold gate open at:
+Hold gate open at:
   - [ ] Current Position
   - [ ] Man gate
   - [ ] Full open
@@ -53,4 +53,5 @@ From Left/Right or Top/Bottom
 | 19  | Battery 12V negative  | Battery Circuit negative | 4 pin green #3   | 5     |
 | 20  |  Battery 1V positive  | Battery Circuit positive | 4 pin green #4   | 5     |
 | 21  |        Charger        | Power supply             |                  |       |
-|     |                       |                          |                  |       |
+
+![](/pictures/existing_controller.jpg)
