@@ -31,29 +31,30 @@ Sliding gate with beam sensor on inside of gate. No other sensors present. Has G
 ### I/O on Controller
 From Left/Right or Top/Bottom
 
-| #   |          Description          | Type                         | Connector        | Group |     |     |
-|:--- |:-----------------------------:|:---------------------------- |:---------------- | ----- | --- | --- |
-| 1   |             Light             | dry contact                  | 2 pin green #1   | 1     |     |     |
-| 2   |             Light             | dry contact                  | 2 pin green #2   | 1     |     |     |
-| 3   |     Encoder/Origin switch     | Multipin plug                | 6 pin white      | 2     |     |     |
-| 4   |          Safe Common          | Common                       | 3 pin green #1   | 3     |     |     |
-| 5   |          Aux 12V Out          | +12VDC                       | 3 pin green #2   | 3     |     |     |
-| 6   | Safety Close (Safe to close)  | Input                        | 3 pin green #3   | 3     |     |     |
-| 7   |   Safety Open (Lock Closed)   | Input                        | 10 pin green #1  | 3     |     |     |
-| 8   |     Lck/Stp - Locks Gate      | N/C Switch Input             | 10 pin green #2  | 4     |     |     |
-| 9   | Trg - Trigger - Activate gate | N/O Switch Input             | 10 pin green #3  | 4     |     |     |
-| 10  |     Ped - Pedestrian open     | N/O Switch Input             | 10 pin green #4  | 4     |     |     |
-| 11  |              Com              | Common for 8, 9, 10          | 10 pin green #5  | 4     |     |     |
-| 12  |        FRX (Free exit)        | N/O switch Input             | 10 pin green #6  | 4     |     |     |
-| 13  |              Aux              | N/O switch                   | 10 pin green #7  | 4     |     |     |
-| 14  |            Status             | LED OUtput                   | 10 pin green #8  | 4     |     |     |
-| 15  |              Com              | Common for 12, 13, 14        | 10 pin green #9  | 4     |     |     |
-| 16  |            Aux I/O            | Input to trigger Light Relay | 10 pin green #10 | 4     |     |     |
-| 17  |             Motor             | Power                        | 4 pin green #1   | 5     |     |     |
-| 18  |             Motor             | Power                        | 4 pin green #2   | 5     |     |     |
-| 19  |     Battery 12V negative      | Battery Circuit negative     | 4 pin green #3   | 5     |     |     |
-| 20  |      Battery 1V positive      | Battery Circuit positive     | 4 pin green #4   | 5     |     |     |
-| 21  |            Charger            | Power supply                 |                  |       |     |     |
+| #   |          Description          | Type                         | Connector                  | Group |     |     |
+|:--- |:-----------------------------:|:---------------------------- |:-------------------------- | ----- | --- | --- |
+| 1   |             Light             | dry contact                  | 2 pin green #1             | 1     |     |     |
+| 2   |             Light             | dry contact                  | 2 pin green #2             | 1     |     |     |
+| 3   |     Encoder/Origin switch     | Multipin plug                | 6 pin white                | 2     |     |     |
+| 4   |          Safe Common          | Common                       | 3 pin green #1             | 3     |     |     |
+| 5   |          Aux 12V Out          | +12VDC                       | 3 pin green #2             | 3     |     |     |
+| 6   | Safety Close (Safe to close)  | Input                        | 3 pin green #3             | 3     |     |     |
+| 7   |   Safety Open (Lock Closed)   | Input                        | 10 pin green #1            | 3     |     |     |
+| 8   |     Lck/Stp - Locks Gate      | N/C Switch Input             | 10 pin green #2            | 4     |     |     |
+| 9   | Trg - Trigger - Activate gate | N/O Switch Input             | 10 pin green #3            | 4     |     |     |
+| 10  |     Ped - Pedestrian open     | N/O Switch Input             | 10 pin green #4            | 4     |     |     |
+| 11  |              Com              | Common for 8, 9, 10          | 10 pin green #5            | 4     |     |     |
+| 12  |        FRX (Free exit)        | N/O switch Input             | 10 pin green #6            | 4     |     |     |
+| 13  |              Aux              | N/O switch                   | 10 pin green #7            | 4     |     |     |
+| 14  |            Status             | LED OUtput                   | 10 pin green #8            | 4     |     |     |
+| 15  |              Com              | Common for 12, 13, 14        | 10 pin green #9            | 4     |     |     |
+| 16  |            Aux I/O            | Input to trigger Light Relay | 10 pin green #10           | 4     |     |     |
+| 17  |             Motor             | Power                        | 4 pin green #1             | 5     |     |     |
+| 18  |             Motor             | Power                        | 4 pin green #2             | 5     |     |     |
+| 19  |     Battery 12V negative      | Battery Circuit negative     | 4 pin green #3             | 5     |     |     |
+| 20  |      Battery 1V positive      | Battery Circuit positive     | 4 pin green #4             | 5     |     |     |
+| 21  |            Charger            | Power supply                 | 2 pin white                | 6     |     |     |
+| 22  |          Serial port          | UART                         | Hidden under circuit board |      - |     |     |
 
 ![](/pictures/existing_controller.jpg)
 
