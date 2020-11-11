@@ -108,6 +108,8 @@ Consideration required for other input device such as keypad or fingerprint read
 
 Communications to house required. 1x UART for comms with house. 1x UART for future gate controller communication.
 
+Table 4.
+
 | Description     | In/Out | pin |
 |:--------------- |:------:| --- |
 | Beam block      | Input  |     |
@@ -144,3 +146,9 @@ Some available boards in the market:
 - OR cheap and nasty...just the way I like it [KQ130F](https://www.aliexpress.com/item/1005001498852968.html?spm=a2g0s.9042311.0.0.4f0e4c4d9PnOt5) at $AUD13 each including shipping
 
 KQ130F was chosen as I also have garden lights I'd like to control
+
+# Microcontroller
+
+NodeMCU with ESP-12E chip selected.
+
+Flash NodeMCU with Tasmota. Configure IO as per table 4.
