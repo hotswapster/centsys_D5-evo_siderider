@@ -99,30 +99,33 @@ The gate status is indicated by an LED. This LED is also wired to output as the 
 | Two flashes very two seconds    |          No mains present          |
 | Three flashes every two seconds |       Battery voltage is low       |
 
-### Controller IO
+### Microcontroller IO
 Inputs:   6
 <br>Outputs:  4
-<br>UART: 1
+<br>UART: 2
 
 Consideration required for other input device such as keypad or fingerprint reader.
 
-Communications to house required.
+Communications to house required. 1x UART for comms with house. 1x UART for future gate controller communication.
 
 | Description     | In/Out | pin |
 |:--------------- |:------:| --- |
 | Beam block      | Input  |     |
 | Gate closed     | Input  |     |
 | Gate open       | Input  |     |
-| Status Closed   | Input  |     |
+| Status LED      | Input  |     |
 | Doorbell - Ding | Input  |     |
 | Doorbell - Door | Input  |     |
 | TX              | UART1  |     |
 | RX              | UART1  |     |
+| TX              | UART2  |     |
+| RX              | UART2  |     |
 | Disable Inputs  | Output |     |
 | Lock open       | Output |     |
 | trigger         | Output |     |
 | light           | Output |     |
 
+As I have a `NodeMCU ESP-12E` already, that will be used. It will mean sacrificing 1 or 2 pins or one UART port.
 
 # Communications
 The gate is approx 10 metres from the house and has mains power available. Being the main entrance to the house, wifi is not the preferred communication as it is not deemed reliable in the event of an emergency. Two main alternatives are considered:
