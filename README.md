@@ -7,7 +7,7 @@ Work in progress
 
 # Goals
 - [ ] Open gate remotely
-Hold gate open at:
+- Hold gate open at:
   - [ ] Current Position
   - [ ] Man gate
   - [ ] Full open
