@@ -31,30 +31,30 @@ Sliding gate with beam sensor on inside of gate. No other sensors present. Has G
 ### I/O on Controller
 From Left/Right or Top/Bottom
 
-| #   |          Description          | Type                         | Connector                  | Group |     |     |
-|:--- |:-----------------------------:|:---------------------------- |:-------------------------- | ----- | --- | --- |
-| 1   |             Light             | dry contact                  | 2 pin green #1             | 1     |     |     |
-| 2   |             Light             | dry contact                  | 2 pin green #2             | 1     |     |     |
-| 3   |     Encoder/Origin switch     | Multipin plug                | 6 pin white                | 2     |     |     |
-| 4   |          Safe Common          | Common                       | 3 pin green #1             | 3     |     |     |
-| 5   |          Aux 12V Out          | +12VDC                       | 3 pin green #2             | 3     |     |     |
-| 6   | Safety Close (Safe to close)  | Input                        | 3 pin green #3             | 3     |     |     |
-| 7   |   Safety Open (Lock Closed)   | Input                        | 10 pin green #1            | 3     |     |     |
-| 8   |     Lck/Stp - Locks Gate      | N/C Switch Input             | 10 pin green #2            | 4     |     |     |
-| 9   | Trg - Trigger - Activate gate | N/O Switch Input             | 10 pin green #3            | 4     |     |     |
-| 10  |     Ped - Pedestrian open     | N/O Switch Input             | 10 pin green #4            | 4     |     |     |
-| 11  |              Com              | Common for 8, 9, 10          | 10 pin green #5            | 4     |     |     |
-| 12  |        FRX (Free exit)        | N/O switch Input             | 10 pin green #6            | 4     |     |     |
-| 13  |              Aux              | N/O switch                   | 10 pin green #7            | 4     |     |     |
-| 14  |            Status             | LED OUtput                   | 10 pin green #8            | 4     |     |     |
-| 15  |              Com              | Common for 12, 13, 14        | 10 pin green #9            | 4     |     |     |
-| 16  |            Aux I/O            | Input to trigger Light Relay | 10 pin green #10           | 4     |     |     |
-| 17  |             Motor             | Power                        | 4 pin green #1             | 5     |     |     |
-| 18  |             Motor             | Power                        | 4 pin green #2             | 5     |     |     |
-| 19  |     Battery 12V negative      | Battery Circuit negative     | 4 pin green #3             | 5     |     |     |
-| 20  |      Battery 1V positive      | Battery Circuit positive     | 4 pin green #4             | 5     |     |     |
-| 21  |            Charger            | Power supply                 | 2 pin white                | 6     |     |     |
-| 22  |          Serial port          | UART                         | Hidden under circuit board |      - |     |     |
+| #   |          Description          | Type                         | Connector                  | Group |
+|:--- |:-----------------------------:|:---------------------------- |:-------------------------- | ----- |
+| 1   |             Light             | dry contact                  | 2 pin green #1             | 1     |
+| 2   |             Light             | dry contact                  | 2 pin green #2             | 1     |
+| 3   |     Encoder/Origin switch     | Multipin plug                | 6 pin white                | 2     |
+| 4   |          Safe Common          | Common                       | 3 pin green #1             | 3     |
+| 5   |          Aux 12V Out          | +12VDC                       | 3 pin green #2             | 3     |
+| 6   | Safety Close (Safe to close)  | Input                        | 3 pin green #3             | 3     |
+| 7   |   Safety Open (Lock Closed)   | Input                        | 10 pin green #1            | 3     |
+| 8   |     Lck/Stp - Locks Gate      | N/C Switch Input             | 10 pin green #2            | 4     |
+| 9   | Trg - Trigger - Activate gate | N/O Switch Input             | 10 pin green #3            | 4     |
+| 10  |     Ped - Pedestrian open     | N/O Switch Input             | 10 pin green #4            | 4     |
+| 11  |              Com              | Common for 8, 9, 10          | 10 pin green #5            | 4     |
+| 12  |        FRX (Free exit)        | N/O switch Input             | 10 pin green #6            | 4     |
+| 13  |              Aux              | N/O switch                   | 10 pin green #7            | 4     |
+| 14  |            Status             | LED Output                   | 10 pin green #8            | 4     |
+| 15  |              Com              | Common for 12, 13, 14        | 10 pin green #9            | 4     |
+| 16  |            Aux I/O            | Input to trigger Light Relay | 10 pin green #10           | 4     |
+| 17  |             Motor             | Power                        | 4 pin green #1             | 5     |
+| 18  |             Motor             | Power                        | 4 pin green #2             | 5     |
+| 19  |     Battery 12V negative      | Battery Circuit negative     | 4 pin green #3             | 5     |
+| 20  |      Battery 1V positive      | Battery Circuit positive     | 4 pin green #4             | 5     |
+| 21  |            Charger            | Power supply                 | 2 pin white                | 6     |
+| 22  |          Serial port          | UART                         | Hidden under circuit board | -     |
 
 ![](/pictures/existing_controller.jpg)
 
@@ -82,7 +82,7 @@ There is a serial port underneath the circuit board however no investigation has
 ![UART](/pictures/existing_pcb_serial_port_crop.jpeg)
 
 
-### Gate Status
+### Gate Status using LED
 
 The gate status is indicated by an LED. This LED is also wired to output as the table above. Wiring this to a micro controller can decode the flashes into the sates shown in the table below:
 
@@ -95,3 +95,27 @@ The gate status is indicated by an LED. This LED is also wired to output as the 
 | One flash every two seconds     | Pillar light override is activated |
 | Two flashes very two seconds    |          No mains present          |
 | Three flashes every two seconds |       Battery voltage is low       |
+
+### Controller IO
+Inputs:   6
+<br>Outputs:  4
+<br>UART: 1
+
+Consideration required for other input device such as keypad or fingerprint reader.
+
+Communications to house required.
+
+| Description     | In/Out | pin |
+|:--------------- |:------:| --- |
+| Beam block      | Input  |     |
+| Gate closed     | Input  |     |
+| Gate open       | Input  |     |
+| Status Closed   | Input  |     |
+| Doorbell - Ding | Input  |     |
+| Doorbell - Door | Input  |     |
+| TX              | UART1  |     |
+| RX              | UART1  |     |
+| Disable Inputs  | output |     |
+| Lock open       | output |     |
+| trigger         | Output |     |
+| light           | Output |     |
