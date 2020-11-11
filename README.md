@@ -20,12 +20,15 @@ Work in progress
 ## List
 - Centsys D5-evo
 - Microcontroller
-- Wifi comms
-- Relays
+- Communications back to house
+- Relays (if required
+  )
 
 ## Existing Installation
 
 Sliding gate with beam sensor on inside of gate. No other sensors present. Has GPRS modem installed which no longer works as there is no 2G in this area. Might be possible to use some of the existing 2G interface wiring as there is an antenna installed.
+
+Pictures can be found in `/pictures`.
 
 ## Centsys D5-evo
 ### I/O on Controller
@@ -75,7 +78,7 @@ From Left/Right
 
 ![](/pictures/existing_GPRS.jpeg)
 
-## Interfacing
+## Interfacing to gate controller
 
 ### Serial
 There is a serial port underneath the circuit board however no investigation has been done with this yet. After standard wiring has been used for this automation, the serial port may be investigated further.
@@ -119,3 +122,22 @@ Communications to house required.
 | Lock open       | Output |     |
 | trigger         | Output |     |
 | light           | Output |     |
+
+
+# Communications
+The gate is approx 10 metres from the house and has mains power available. Being the main entrance to the house, wifi is not the preferred communication as it is not deemed reliable in the event of an emergency. Two main alternatives are considered:
+- Ethernet over Power line
+- Serial over power line
+
+## Ethernet over Power (Powerline adapter)
+Ethernet over power is easy to achieve however te hardware is fairly bulky.
+
+## Serial over Power (PLM/PLC)
+
+Some available boards in the market:
+- STEVAL-IHP005V1 at $AUD150 (and need one master plus one per node)
+- NXP USA Inc. OM13313,598 but now obsolete
+- Jarvie board are available at $65 Australian per [modem](https://www.tindie.com/products/jarvie/smart-home-power-line-modem-demo-board/)
+- OR cheap and nasty...just the way I like it [KQ130F](https://www.aliexpress.com/item/1005001498852968.html?spm=a2g0s.9042311.0.0.4f0e4c4d9PnOt5) at $AUD13 each including shipping
+
+KQ130F was chosen as I also have garden lights I'd like to control
