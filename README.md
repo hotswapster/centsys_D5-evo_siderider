@@ -1,4 +1,4 @@
-Installation# centsys_D5-evo_siderider
+# centsys_D5-evo_siderider
 Monitor and control you Centsys D5-Evo gate controller
 
 # Status
@@ -83,14 +83,14 @@ There is a serial port underneath the circuit board however no investigation has
 
 ### Gate Status
 
-The gate status is indicated by an LED. THis LED is also wired to output as the table above. Wiring this io a micro controller can decode the flashes into the sates shown in the table below:
+The gate status is indicated by an LED. This LED is also wired to output as the table above. Wiring this to a micro controller can decode the flashes into the sates shown in the table below:
 
 | LED State                       |            Description             |
 |:------------------------------- |:----------------------------------:|
 | Off                             |           Gate is closed           |
-| On                              |  Gate is partically or fully open  |
-| Continious slow flash           |          Gate is opening           |
-| Continious fast flash           |          Gate is closing           |
+| On                              |  Gate is partially or fully open  |
+| Continuous slow flash           |          Gate is opening           |
+| Continuous fast flash           |          Gate is closing           |
 | One flash every two seconds     | Pillar light override is activated |
 | Two flashes very two seconds    |          No mains present          |
 | Three flashes every two seconds |       Battery voltage is low       |
