@@ -110,24 +110,27 @@ Communications to house required. 1x UART for comms with house. 1x UART for futu
 
 Table 4.
 
-| Description     | In/Out | pin |
-|:--------------- |:------:| --- |
-| Beam block      | Input  |     |
-| Gate closed     | Input  |     |
-| Gate open       | Input  |     |
-| Status LED      | Input  |     |
-| Doorbell - Ding | Input  |     |
-| Doorbell - Door | Input  |     |
-| TX              | UART1  |     |
-| RX              | UART1  |     |
-| TX              | UART2  |     |
-| RX              | UART2  |     |
-| Disable Inputs  | Output |     |
-| Lock open       | Output |     |
-| trigger         | Output |     |
-| light           | Output |     |
+| Description     | In/Out | pin | pin name      |
+|:--------------- |:------:| --- | ------------- |
+| Beam block      | Input  | 22  | bb_pin        |
+| Gate closed     | Input  | 23  | gc_pin        |
+| Gate open       | Input  | 24  | go_pin        |
+| Status LED      | Input  | 25  | stat_pin      |
+| Doorbell - Ding | Input  | 26  | ding_pin      |
+| Doorbell - Door | Input  | 27  | dong_pin      |
+| TX - powerline  | UART1  |     |               |
+| RX - Powerline  | UART1  |     |               |
+| TX              | UART2  |     |               |
+| RX              | UART2  |     |               |
+| Disable Inputs  | Output | 40  | lockinpos_pin |
+| Lock open       | Output | 41  | lockopen_pin  |
+| trigger         | Output | 42  | trigger_pin   |
+| light           | Output | 43  | lights_pin    |
+|                 |        |     |               |
 
-As I have a `NodeMCU ESP-12E` already, that will be used. It will mean sacrificing 1 or 2 pins or one UART port.
+As I'm waiting for parts to arrive for powerline communication, I'll use a `NodeMCU` in lieu of the powerline connector. This way, when the powerline modules arrive, I can just swap it out and it'll give a good indication of how reliable the wifi works in the meantime.
+
+For the main controller, I'll use using an Arduino Mega - because that's what I have lying around and it has two serial ports.
 
 # Communications
 The gate is approx 10 metres from the house and has mains power available. Being the main entrance to the house, wifi is not the preferred communication as it is not deemed reliable in the event of an emergency. Two main alternatives are considered:
@@ -149,6 +152,10 @@ KQ130F was chosen as I also have garden lights I'd like to control
 
 # Microcontroller
 
+## Arduino Mega
+Connect as per table 4.
+
+## Node MCU as Powerline Substitute
 NodeMCU with ESP-12E chip selected.
 
 Flash NodeMCU with Tasmota. Configure IO as per table 4.
