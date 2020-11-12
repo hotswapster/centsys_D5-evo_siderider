@@ -11,6 +11,7 @@
   const int lockopen_pin = 41;
   const int trig_pin = 42;
   const int lights_pin = 42;
+  
 
 //statuses
   char gate_pos[7] = "unknown"; //open, opening, closed, closing
@@ -27,6 +28,10 @@
   bool lockedopen;
   bool lockedinpos;
   bool trigger;
+
+//variables
+  int dingdelay = 1000; //how long ding latches in ms
+  int dongdelay = 1000; //how long dong latches in ms
 
 void setup() {
   // put your setup code here, to run once:
