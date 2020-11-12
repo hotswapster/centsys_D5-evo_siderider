@@ -1,16 +1,20 @@
 
-//assign names to pins
+//libraries
+#include <SoftwareSerial.h>;
 
+//assign names to pins
+  //inputs
   const int bb_pin = 22;
   const int gc_pin = 23;
   const int go_pin = 24;
   const int stat_pin = 25;
   const int ding_pin = 26;
   const int dong_pin = 27;
+  //outputs
   const int lockinpos_pin = 40;
   const int lockopen_pin = 41;
   const int trig_pin = 42;
-  const int lights_pin = 42;
+  const int lights_pin = 43;
   
 
 //statuses
@@ -28,32 +32,45 @@
   bool lockedopen;
   bool lockedinpos;
   bool trigger;
+  bool lightoverride;
+  bool mainsok;
+  bool battok;
 
 //variables
   int dingdelay = 1000; //how long ding latches in ms
   int dongdelay = 1000; //how long dong latches in ms
+  int relaydelay = 5000; //how long relay latches
 
 void setup() {
+
+      
+  //serial
+  Serial.begin(115200);
+  Serial.println("<Arduino is ready>");
+
+    
   // put your setup code here, to run once:
   //from blink
   pinMode(LED_BUILTIN, OUTPUT);
 
   //for project - INPUTS
-  pinMode(22,INPUT);
-  pinMode(23,INPUT);
-  pinMode(24,INPUT);
-  pinMode(25,INPUT);
-  pinMode(26,INPUT);
-  pinMode(27,INPUT);
+  pinMode(bb_pin,INPUT);
+  pinMode(gc_pin,INPUT);
+  pinMode(go_pin,INPUT);
+  pinMode(stat_pin,INPUT);
+  pinMode(ding_pin,INPUT);
+  pinMode(dong_pin,INPUT);
 
   //for project - OUTPUTS
-  pinMode(40,OUTPUT);
-  pinMode(41,OUTPUT);
-  pinMode(42,OUTPUT);
-  pinMode(43,OUTPUT);
+  pinMode(lockinpos_pin,OUTPUT);
+  pinMode(lockopen_pin,OUTPUT);
+  pinMode(trig_pin,OUTPUT);
+  pinMode(lights_pin,OUTPUT);
+
 }
 
 void loop() {
+  
   // put your main code here, to run repeatedly:
 
   //this calls the blink function on the next page

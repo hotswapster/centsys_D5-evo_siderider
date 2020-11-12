@@ -5,6 +5,7 @@ void doorbell() {
         ding = true;
         if(millis()-time > dingdelay){     //Has time delay passed?
           ding = false;
+ //         serial.print("Doorbell Pressed");
     }
   if (dong_pin == HIGH) {
         time = millis();
