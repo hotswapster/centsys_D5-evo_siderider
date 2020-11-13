@@ -11,10 +11,10 @@
   const int ding_pin = 26;
   const int dong_pin = 27;
   //outputs
-  const int lockinpos_pin = 40;
-  const int lockopen_pin = 41;
-  const int trig_pin = 42;
-  const int lights_pin = 43;
+  const int lockinpos_pin = 40; // serial 1 lock, 2 unlock
+  const int lockopen_pin = 41;  // serial 3 lock, 4 unlock
+  const int trig_pin = 42;      // serial 5 trigger
+  const int lights_pin = 43;    // serial 7 on, 8 off
   
 
 //statuses
@@ -40,6 +40,8 @@
   int dingdelay = 1000; //how long ding latches in ms
   int dongdelay = 1000; //how long dong latches in ms
   int relaydelay = 5000; //how long relay latches
+  int triggerlength = 2000; //how long trigger output is active
+  unsigned long triggertimer = millis();   //timer for trigger pulse
 
 void setup() {
 
@@ -67,12 +69,22 @@ void setup() {
   pinMode(trig_pin,OUTPUT);
   pinMode(lights_pin,OUTPUT);
 
+
+
 }
 
 void loop() {
   
-  // put your main code here, to run repeatedly:
-
   //this calls the blink function on the next page
-  blink();
+  //blink();
+
+  //Make serial active
+  myserial();
+
+  //turn trigger off after trigger lenght finished
+    if ( trigger == true && ((millis () - triggertimer) >= triggerlength)) {
+    digitalWrite(trig_pin, LOW);
+    trigger = false;
+    Serial.println("Trigger De-Activated");
+}
 }
