@@ -2,6 +2,10 @@
 //libraries
 #include <SoftwareSerial.h>;
 
+//time to start
+  int boottime = millis();
+  int timesinceboot;
+
 //assign names to pins
   //inputs
   const int bb_pin = 22;
@@ -19,20 +23,21 @@
 
 //statuses
   char gate_pos[7] = "unknown"; //open, opening, closed, closing
-  char beam[5];                 //block, clear
-  char ledstatus[9];            //closed, notclosed, opening, closing, light, mains, battlow
-  bool beamblock;
-  bool ding;
-  bool dong;
-  bool gateopen;
-  bool gateclosed;
+  char beam[7] = "unknown";                 //block, clear
+  char ledstatus[9] = "unknown";            //closed, notclosed, opening, closing, light, mains, battlow
+  bool beamblock;               //used
+  bool ding;                    //used
+  bool dong;                    //used
+  bool gateopen;                //used
+  bool gateclosed;              //used
+  bool lightson;                //used
+  bool lockedopen;              //used
+  bool lockedinpos;             //used
+  bool trigger;                 //used
+  //from status led
+  bool lightoverride;
   bool gateopening;
   bool gateclosing;
-  bool lightson;
-  bool lockedopen;
-  bool lockedinpos;
-  bool trigger;
-  bool lightoverride;
   bool mainsok;
   bool battok;
 
@@ -48,7 +53,10 @@ void setup() {
       
   //serial
   Serial.begin(115200);
+  Serial.println("");
   Serial.println("<Arduino is ready>");
+  Serial.println("https://github.com/hotswapster/centsys_D5-evo_siderider");
+  Serial.println("MIT License");
 
     
   // put your setup code here, to run once:
@@ -57,36 +65,45 @@ void setup() {
 
   //for project - INPUTS
   pinMode(bb_pin,INPUT_PULLUP);
-  pinMode(gc_pin,INPUT);
-  pinMode(go_pin,INPUT);
-  pinMode(stat_pin,INPUT);
-  pinMode(ding_pin,INPUT);
-  pinMode(dong_pin,INPUT);
+  pinMode(gc_pin,INPUT_PULLUP);
+  pinMode(go_pin,INPUT_PULLUP);
+  pinMode(stat_pin,INPUT_PULLUP);
+  pinMode(ding_pin,INPUT_PULLUP);
+  pinMode(dong_pin,INPUT_PULLUP);
 
   //for project - OUTPUTS
   pinMode(lockinpos_pin,OUTPUT);
   pinMode(lockopen_pin,OUTPUT);
   pinMode(trig_pin,OUTPUT);
   pinMode(lights_pin,OUTPUT);
-
-
+  
+  timesinceboot = millis();// - boottime;
+  Serial.println("Setup complete. Begin running program.");
+  Serial.println("");
+  Serial.print("Boot time was: ");
+  Serial.println(String(String(timesinceboot) + "ms"));
 
 }
 
 void loop() {
   
-  //this calls the blink function on the next page
+  //blink for testing
   //blink();
 
   //Make serial active
   myserial();
+  
+  //Monitor gate inputs
+  gateinputs();
 
-  //turn trigger off after trigger lenght finished
+  //Enable doorbell
+  doorbell();
+  
+  //turn trigger off after trigger length finished
     if ( trigger == true && ((millis () - triggertimer) >= triggerlength)) {
     digitalWrite(trig_pin, LOW);
     trigger = false;
     Serial.println("Trigger De-Activated");
     }
-  //Monitor gate inputs
-  gateinputs();
+
 }

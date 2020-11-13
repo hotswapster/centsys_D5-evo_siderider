@@ -30,36 +30,40 @@ void gateinputs() { //manage input behaviour and trigger serial status updates
   gob4 = gateopen; //store old value
   gateopen = digitalRead(go_pin); //read new value
   if (gateopen != gob4){ //if value changes, do something
-    if (gateopen == 1){Serial.println("Gate is closed");}
-    if (gateopen == 0){Serial.println("Gate is not closed");}
+    if (gateopen == 1){Serial.println("Gate is open");}
+    if (gateopen == 0){Serial.println("Gate is not open");}
     gob4 = gateopen;
   }
   
 } 
 
 void statusdecode() {
-  //put the flashing LED code in here
+  //put the flashing LED code in here - use debounce library which can detect couble clicks
 }
 
 
 // Manage outputs
 void lockposon(int8_t pin) {
   digitalWrite(pin, HIGH);
+  lockedinpos = true;
   Serial.println("Lock in Position - locked");
 }
 
 void lockposoff(int8_t pin) {
   digitalWrite(pin, LOW);
-    Serial.println("Lock in Position - unlocked");
+  lockedinpos = false;
+  Serial.println("Lock in Position - unlocked");
 }
 void lockopenon(int8_t pin) {
   digitalWrite(pin, HIGH);
+  lockedopen = true;
   Serial.println("Locked Open");
 }
 
 void lockopenoff(int8_t pin) {
   digitalWrite(pin, LOW);
-    Serial.println("Locked Open Disabled");
+  lockedopen = false;
+  Serial.println("Locked Open Disabled");
 }
 
 void triggeron(int8_t pin) { //Turns on here. Turns off in void loop on main page due not not figuring out how to manage the timer.
