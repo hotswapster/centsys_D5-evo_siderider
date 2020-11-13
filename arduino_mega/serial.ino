@@ -30,24 +30,6 @@ void fullstatusrequest(){
   Serial.print(String(", \"lightson\": " + String(lightson)));
   Serial.print(String(", \"lockedopen\": " + String(lockedopen)));
   Serial.print(String(", \"lockedinpos\": " + String(lockedinpos)));
+  Serial.print(String(", \"temp\": " + String(temperature)));
   Serial.println(String(", \"trigger\": " + String(trigger) + "}"));
-  
-  
 }
-
-
-
-/*
-  char gate_pos[7] = "unknown"; //open, opening, closed, closing
-  char beam[5];                 //block, clear
-  char ledstatus[9];            //closed, notclosed, opening, closing, light, mains, battlow
-  bool beamblock;               //used
-  bool ding;                    //used
-  bool dong;                    //used
-  bool gateopen;                //used
-  bool gateclosed;              //used
-  bool lightson;                //used
-  bool lockedopen;              //used
-  bool lockedinpos;             //used
-  bool trigger;                 //used
-  */

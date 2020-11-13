@@ -2,6 +2,17 @@
 //libraries
 #include <SoftwareSerial.h>;
 
+  //for temp sensors
+    #include <OneWire.h>
+    #include <DallasTemperature.h>
+    #define ONE_WIRE_BUS 2 //sensor data connected to pin 2
+    // Create a new instance of the oneWire class to communicate with any OneWire device:
+    OneWire oneWire(ONE_WIRE_BUS);
+    // Pass the oneWire reference to DallasTemperature library:
+    DallasTemperature sensors(&oneWire);
+
+
+
 //time to start
   int boottime = millis();
   int timesinceboot;
@@ -47,6 +58,7 @@
   int relaydelay = 5000; //how long relay latches
   int triggerlength = 2000; //how long trigger output is active
   unsigned long triggertimer = millis();   //timer for trigger pulse
+  float temperature;
 
 void setup() {
 
@@ -83,6 +95,8 @@ void setup() {
   Serial.print("Boot time was: ");
   Serial.println(String(String(timesinceboot) + "ms"));
 
+  //one wire for temp
+  sensors.begin();
 }
 
 void loop() {
@@ -98,6 +112,12 @@ void loop() {
 
   //Enable doorbell
   doorbell();
+
+  //environ
+  environ();
+
+  //timed cycles
+  tensec();
   
   //turn trigger off after trigger length finished
     if ( trigger == true && ((millis () - triggertimer) >= triggerlength)) {
