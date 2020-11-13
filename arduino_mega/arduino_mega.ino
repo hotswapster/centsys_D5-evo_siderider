@@ -56,7 +56,7 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
 
   //for project - INPUTS
-  pinMode(bb_pin,INPUT);
+  pinMode(bb_pin,INPUT_PULLUP);
   pinMode(gc_pin,INPUT);
   pinMode(go_pin,INPUT);
   pinMode(stat_pin,INPUT);
@@ -86,5 +86,7 @@ void loop() {
     digitalWrite(trig_pin, LOW);
     trigger = false;
     Serial.println("Trigger De-Activated");
-}
+    }
+  //Monitor gate inputs
+  gateinputs();
 }
