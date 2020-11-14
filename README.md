@@ -91,7 +91,7 @@ From Left/Right
 ### Serial
 There is a serial port underneath the circuit board however no investigation has been done with this yet. After standard wiring has been used for this automation, the serial port may be investigated further.
 ![UART](/pictures/existing_pcb_serial_port_crop.jpeg)
-
+What wasn't figured out until after this was put back outside was the SPI interface on the left hand side of the photo. The middle pad looks like a comms line on a scope. Breaking into this would be useful as it has battery current and absolute gate position etc.
 
 ### Gate Status using LED
 
