@@ -7,10 +7,11 @@ Work in progress. Arduino can send short messages to MQTT.
 
 To do:
 - [X] Get a basic concept working
-- [ ] Fix serial message length
+- [X] Fix serial message length
 - [X] Test MQTT from broker to Arduino
 - [ ] Get LED decoding working
 - [ ] Work out divider network for inputs to Arduino
+- [ ] Create a reset for all locks
 - [ ] Install and commission
 
 # Goals
@@ -27,10 +28,9 @@ To do:
 # Equipment
 ## List
 - Centsys D5-evo
-- Microcontroller
-- Communications back to house
-- Relays (if required
-  )
+- Microcontroller with wifi
+- Communications back to house powerline or wifi
+- 4 way relay board
 
 ## Existing Installation
 
@@ -168,14 +168,15 @@ NodeMCU with ESP-12E chip selected. Used Software serial to begin with but will 
 
 
 ### Configuration
+1. If using Software serial, start here. If using Hardware, start at step 6.
 1. Download Tasmota source
 1. Configure user settings if you so wish, or do via web interface later
-1. Set `#define TM_SERIAL_BUFFER_SIZE        64` in `TasmotaSerial.h`
+1. If using Software Serial, Set `#define TM_SERIAL_BUFFER_SIZE        64` in `TasmotaSerial.h`
 1. Compile
 2. Flash NodeMCU with Tasmota
 3. Configure wifi to your liking
 3. Configure as `Generic (18)`
-4. Configure pins D1 and D2 tp `SerbrRx` and `SerBrtx` (for software serial config - may differ if you decide to use hardware serial)
+4. Configure pins RX and TX tp `Serial Rx` and `Serial Tx` (for hardware serial config - also works on different pins with software serial using config `SerBrTx` and `SerBrRx`)
 5. Set baudrate - for software serial `SBaudrate 115200`
   Note: if an unknown error occurs, you haven't configred the pins to serial bridge properly
 6. Configure MQTT broker
