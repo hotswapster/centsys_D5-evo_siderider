@@ -77,7 +77,7 @@ void setup() {
   Serial.println("MIT License");
 
   //serial conneciton to nodemcu
-  Serial1.begin(9600);
+  Serial1.begin(115200);
 
     
   // put your setup code here, to run once:
