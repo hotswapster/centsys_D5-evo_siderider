@@ -3,7 +3,15 @@ Monitor and control you Centsys D5-Evo gate controller. Also known as Centurion 
 
 # Status
 
-Work in progress
+Work in progress. Arduino can send short messages to MQTT.
+
+To do:
+- [X] Get a basic concept working
+- [ ] Fix serial message length
+- [ ] Test MQTT from broker to Arduino
+- [ ] Get LED decoding working
+- [ ] Work out divider network for inputs to Arduino
+- [ ] Install and commission
 
 # Goals
 - [ ] Open gate remotely
@@ -158,6 +166,8 @@ Connect as per table 4.
 ## Node MCU as Powerline Substitute
 NodeMCU with ESP-12E chip selected. Used Software serial to begin with but will likely change to hardware serial later.
 
+
+### Configuration
 1. Download Tasmota source
 1. Configure user settings if you so wish, or do via web interface later
 1. Set `#define TM_SERIAL_BUFFER_SIZE        64` in `TasmotaSerial.h`
@@ -171,3 +181,8 @@ NodeMCU with ESP-12E chip selected. Used Software serial to begin with but will 
 6. Configure MQTT broker
 7. Set a web interface password if you so desire
 8. Back up your config
+
+### Commands
+TO active a relay, send an MQTT message to `cmnd/frontgate/sserialsend` with the payload of the number corresponding to output programmed in the gate.ino file.
+
+For example, to activate `Lock Open On` send `cmnd/frontgate/sserialsend 3`. To deactivate `Lock Open On` send `cmnd/frontgate/sserialsend 4`. This activates and deactivates relay 2.

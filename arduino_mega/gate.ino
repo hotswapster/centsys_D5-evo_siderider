@@ -73,7 +73,7 @@ void lockposon(int8_t pin) {
   lockedinpos = true;
   Serial.println("Lock in Position - locked");
   outputjson["lockedinpos"] = String(lockedinpos);
-  //serializeJson(inputjson, Serial);
+  //serializeJson(outputjson, Serial);
   serializeJson(outputjson, Serial1);
 }
 
@@ -82,7 +82,7 @@ void lockposoff(int8_t pin) {
   lockedinpos = false;
   Serial.println("Lock in Position - unlocked");
   outputjson["lockedinpos"] = String(lockedinpos);
-  //serializeJson(inputjson, Serial);
+  //serializeJson(outputjson, Serial);
   serializeJson(outputjson, Serial1);
 }
 void lockopenon(int8_t pin) {
@@ -90,7 +90,7 @@ void lockopenon(int8_t pin) {
   lockedopen = true;
   Serial.println("Locked Open");
   outputjson["lockedopen"] = String(lockedopen);
-  //serializeJson(inputjson, Serial);
+  //serializeJson(outputjson, Serial);
   serializeJson(outputjson, Serial1);
 }
 
@@ -99,7 +99,7 @@ void lockopenoff(int8_t pin) {
   lockedopen = false;
   Serial.println("Locked Open Disabled");
   outputjson["lockedopen"] = String(lockedopen);
-  //serializeJson(inputjson, Serial);
+  //serializeJson(outputjson, Serial);
   serializeJson(outputjson, Serial1);
 }
 
@@ -110,7 +110,7 @@ void triggeron(int8_t pin) { //Turns on here. Turns off in void loop on main pag
     Serial.println("Trigger Activated");
     
   outputjson["trigger"] = String(trigger);
-  //serializeJson(inputjson, Serial);
+  //serializeJson(outputjson, Serial);
   serializeJson(outputjson, Serial1);
 }
 
@@ -120,7 +120,7 @@ void turnlighton(int8_t pin) {
   Serial.println("Lights On");
   
   outputjson["lightson"] = String(lightson);
-  //serializeJson(inputjson, Serial);
+  //serializeJson(outputjson, Serial);
   serializeJson(outputjson, Serial1);
   
 }
@@ -131,6 +131,6 @@ void turnlightoff(int8_t pin) {
     Serial.println("Lights Off");
     
   outputjson["lightson"] = String(lightson);
-  //serializeJson(inputjson, Serial);
+  //serializeJson(outputjson, Serial);
   serializeJson(outputjson, Serial1);
 }
