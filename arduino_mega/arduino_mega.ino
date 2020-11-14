@@ -34,8 +34,8 @@
   
 
 //statuses
-  char gate_pos[7] = "unknown"; //open, opening, closed, closing
-  char beam[7] = "unknown";                 //block, clear
+  char gate_pos[9] = "unknown"; //open, opening, closed, closing
+  char beam[9] = "unknown";                 //block, clear
   char ledstatus[9] = "unknown";            //closed, notclosed, opening, closing, light, mains, battlow
   bool beamblock;               //used
   bool ding;                    //used
@@ -60,17 +60,24 @@
   int triggerlength = 2000; //how long trigger output is active
   int lightlevel = 0; //from mlight dependent resistor
   unsigned long triggertimer = millis();   //timer for trigger pulse
+  unsigned long startcycletime = millis();   //timer for measuring cycle time
+  unsigned long endcycletime = 0;   //timer for calculating cycle time
+  unsigned long cycletime = 0;   //timer for calculating cycle time
+  unsigned long maxcycletime = 0;   //timer for calculating cycle time 
   float temperature;
 
 void setup() {
 
       
-  //serial
+  //serial over USB for program debugging
   Serial.begin(115200);
   Serial.println("");
   Serial.println("<Arduino is ready>");
   Serial.println("https://github.com/hotswapster/centsys_D5-evo_siderider");
   Serial.println("MIT License");
+
+  //serial conneciton to nodemcu
+  Serial1.begin(9600);
 
     
   // put your setup code here, to run once:
@@ -103,12 +110,13 @@ void setup() {
 }
 
 void loop() {
-  
+  startcycletime = millis(); //measuring cpu cycle time
+      
   //blink for testing
   //blink();
 
   //Make serial active
-  myserial();
+//  myserial();
   
   //Monitor gate inputs
   gateinputs();
@@ -120,6 +128,7 @@ void loop() {
   environ();
 
   //timed cycles
+  thirtysec();
   tensec();
   fivesec();
   
@@ -130,4 +139,13 @@ void loop() {
     Serial.println("Trigger De-Activated");
     }
 
+  mcuserial();
+
+
+  //Calculate cycle time
+    endcycletime = millis();
+    cycletime = endcycletime - startcycletime;
+    if(cycletime > maxcycletime){
+      maxcycletime = cycletime;
+    }
 }
