@@ -1,6 +1,7 @@
 
 //libraries
 #include <SoftwareSerial.h>;
+#include <ArduinoJson.h>;
 
   //for temp sensors
     #include <OneWire.h>

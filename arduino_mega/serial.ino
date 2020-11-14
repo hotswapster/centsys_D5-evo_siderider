@@ -1,3 +1,4 @@
+// serial = USB | serial1 = connection to nodeMCU
 
 
 // using switch only allows one character sent from serial. Sending this character from monitor will triggger relay.
