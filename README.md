@@ -1,5 +1,5 @@
 # centsys_D5-evo_siderider
-Monitor and control you Centsys D5-Evo gate controller
+Monitor and control you Centsys D5-Evo gate controller. Also known as Centurion D5-Evo.
 
 # Status
 
@@ -156,6 +156,18 @@ KQ130F was chosen as I also have garden lights I'd like to control
 Connect as per table 4.
 
 ## Node MCU as Powerline Substitute
-NodeMCU with ESP-12E chip selected.
+NodeMCU with ESP-12E chip selected. Used Software serial to begin with but will likely change to hardware serial later.
 
-Flash NodeMCU with Tasmota. Configure IO as per table 4.
+1. Download Tasmota source
+1. Configure user settings if you so wish, or do via web interface later
+1. Set `#define TM_SERIAL_BUFFER_SIZE        64` in `TasmotaSerial.h`
+1. Compile
+2. Flash NodeMCU with Tasmota
+3. Configure wifi to your liking
+3. Configure as `Generic (18)`
+4. Configure pins D1 and D2 tp `SerbrRx` and `SerBrtx` (for software serial config - may differ if you decide to use hardware serial)
+5. Set baudrate - for software serial `SBaudrate 115200`
+  Note: if an unknown error occurs, you haven't configred the pins to serial bridge properly
+6. Configure MQTT broker
+7. Set a web interface password if you so desire
+8. Back up your config
