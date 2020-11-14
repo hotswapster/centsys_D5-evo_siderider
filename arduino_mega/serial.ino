@@ -31,5 +31,6 @@ void fullstatusrequest(){
   Serial.print(String(", \"lockedopen\": " + String(lockedopen)));
   Serial.print(String(", \"lockedinpos\": " + String(lockedinpos)));
   Serial.print(String(", \"temp\": " + String(temperature)));
+  Serial.print(String(", \"lightlevel\": " + String(lightlevel)));
   Serial.println(String(", \"trigger\": " + String(trigger) + "}"));
 }

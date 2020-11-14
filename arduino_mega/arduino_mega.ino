@@ -25,6 +25,7 @@
   const int stat_pin = 25;
   const int ding_pin = 26;
   const int dong_pin = 27;
+  const int lightsensor_pin = A0;
   //outputs
   const int lockinpos_pin = 40; // serial 1 lock, 2 unlock
   const int lockopen_pin = 41;  // serial 3 lock, 4 unlock
@@ -57,6 +58,7 @@
   int dongdelay = 1000; //how long dong latches in ms
   int relaydelay = 5000; //how long relay latches
   int triggerlength = 2000; //how long trigger output is active
+  int lightlevel = 0; //from mlight dependent resistor
   unsigned long triggertimer = millis();   //timer for trigger pulse
   float temperature;
 
@@ -82,6 +84,7 @@ void setup() {
   pinMode(stat_pin,INPUT_PULLUP);
   pinMode(ding_pin,INPUT_PULLUP);
   pinMode(dong_pin,INPUT_PULLUP);
+  pinMode(lightsensor_pin, INPUT);
 
   //for project - OUTPUTS
   pinMode(lockinpos_pin,OUTPUT);
@@ -118,6 +121,7 @@ void loop() {
 
   //timed cycles
   tensec();
+  fivesec();
   
   //turn trigger off after trigger length finished
     if ( trigger == true && ((millis () - triggertimer) >= triggerlength)) {
