@@ -158,6 +158,9 @@ Some available boards in the market:
 
 KQ130F was chosen as I also have garden lights I'd like to control
 
+## wifi
+Giving Wifi a crack whilst waiting for the powerline to arrive. See NodeMCU below.
+
 # Microcontroller
 
 ## Arduino Mega
