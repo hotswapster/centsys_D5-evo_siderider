@@ -7,48 +7,50 @@
 //}
 
 void fullstatusrequest(){
-  Serial.print(String("{\"gate_pos\": \"" + String(gate_pos) + "\""));
-  Serial.print(String(", \"beam\": \"" + String(beam) + "\""));
-  Serial.print(String(", \"ledstatus\": \"" + String(ledstatus) + "\""));
-  Serial.print(String(", \"beamblock\": " + String(beamblock)));
-  Serial.print(String(", \"ding\": " + String(ding)));
-  Serial.print(String(", \"dong\": " + String(dong)));
-  Serial.print(String(", \"gateopen\": " + String(gateopen)));
-  Serial.print(String(", \"gateclosed\": " + String(gateclosed)));
-  Serial.print(String(", \"lightson\": " + String(lightson)));
-  Serial.print(String(", \"lockedopen\": " + String(lockedopen)));
-  Serial.print(String(", \"lockedinpos\": " + String(lockedinpos)));
-  Serial.print(String(", \"temp\": " + String(temperature)));
-  Serial.print(String(", \"lightlevel\": " + String(lightlevel)));
-  Serial.println(String(", \"trigger\": " + String(trigger) + "}"));
+  StaticJsonDocument<250> statusjson;
+  statusjson["gp"] = String(gate_pos);
+  statusjson["b"] = String(beam);
+  statusjson["st"] = String(ledstatus);
+  statusjson["bb"] = String(beamblock);
+  statusjson["ding"] = String(ding);
+  statusjson["dong"] = String(dong);
+  statusjson["go"] = String(gateopen);
+  statusjson["gc"] = String(gateclosed);
+  statusjson["l"] = String(lightson);
+  statusjson["lo"] = String(lockedopen);
+  statusjson["lp"] = String(lockedinpos);
+  statusjson["t"] = String(temperature);
+  statusjson["ll"] = String(lightlevel);
+  statusjson["t"] = String(trigger);
+
+  serializeJson(statusjson, Serial);
+  serializeJson(statusjson, Serial1);
+  //serializeJson(statusjson, Serial1);
 }
 
-void fullstatusrequesttomcu(){
-  Serial1.print(String("{\"gate_pos\": \"" + String(gate_pos) + "\""));
-  Serial1.print(String(", \"beam\": \"" + String(beam) + "\""));
-  Serial1.print(String(", \"ledstatus\": \"" + String(ledstatus) + "\""));
-  Serial1.print(String(", \"beamblock\": " + String(beamblock)));
-  Serial1.print(String(", \"ding\": " + String(ding)));
-  Serial1.print(String(", \"dong\": " + String(dong)));
-  Serial1.print(String(", \"gateopen\": " + String(gateopen)));
-  Serial1.print(String(", \"gateclosed\": " + String(gateclosed)));
-  Serial1.print(String(", \"lightson\": " + String(lightson)));
-  Serial1.print(String(", \"lockedopen\": " + String(lockedopen)));
-  Serial1.print(String(", \"lockedinpos\": " + String(lockedinpos)));
-  Serial1.print(String(", \"temp\": " + String(temperature)));
-  Serial1.print(String(", \"lightlevel\": " + String(lightlevel)));
-  Serial1.println(String(", \"trigger\": " + String(trigger) + "}"));
+void fullstatusrequesttomcu(){ //send multiple times as nodemcu only accepts 64 characters
+  StaticJsonDocument<256> statusjson;
+  statusjson["gate_pos"] = String(gate_pos);
+  statusjson["beam"] = String(beam);
+  statusjson["ledstatus"] = String(ledstatus);
+  statusjson["beamblock"] = String(beamblock);
+  statusjson["ding"] = String(ding);
+  statusjson["dong"] = String(dong);
+  statusjson["gateopen"] = String(gateopen);
+  statusjson["gateclosed"] = String(gateclosed);
+  statusjson["lightson"] = String(lightson);
+  statusjson["lockedopen"] = String(lockedopen);
+  statusjson["lockedinpos"] = String(lockedinpos);
+  statusjson["temp"] = String(temperature);
+  statusjson["lightlevel"] = String(lightlevel);
+  statusjson["trigger"] = String(trigger);
+  serializeJson(statusjson, Serial1);
 }
 
 
-//serial port to nodemcu
+//serial port from nodemcu
 void mcuserial() {
-// Send message on serial on for testing
- // Serial1.write("watchdog\":\" \"OK"); this sent message over serial to mcu
-  
   if (Serial1.available()){
-    // Write what is received to the default serial port
-   
     char ser = Serial1.read();
 //    Serial.println("received");
     switch(ser){ 

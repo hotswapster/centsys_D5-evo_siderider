@@ -10,7 +10,7 @@ void thirtysec() {
     if (millis() - thiseclast > midcycletime) {           //run at intervel defined by midcycletime
       //Put 30 second update calls here-------------ᐯ
 
-    //  fullstatusrequesttomcu();
+      
       
       //Put 30 second update calls here-------------ᐱ
       
@@ -24,7 +24,7 @@ void tensec() {
       //Put 10 second update calls here-------------ᐯ
       light();
       fullstatusrequest(); 
-      
+      fullstatusrequesttomcu();
       //Put 10 second update calls here-------------ᐱ
       
       tenseclast = millis();
