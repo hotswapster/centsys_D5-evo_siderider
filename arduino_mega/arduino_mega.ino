@@ -1,6 +1,6 @@
 
 //libraries
-#include <SoftwareSerial.h>;
+// #include <SoftwareSerial.h>;
 #include <ArduinoJson.h>;
 
   //for temp sensors
@@ -53,6 +53,7 @@
   bool gateclosing;
   bool mainsok;
   bool battok;
+  StaticJsonDocument<50> outputjson;
 
 //variables
   int dingdelay = 1000; //how long ding latches in ms
@@ -137,6 +138,11 @@ void loop() {
     if ( trigger == true && ((millis () - triggertimer) >= triggerlength)) {
     digitalWrite(trig_pin, LOW);
     trigger = false;
+    
+    outputjson["trigger"] = String(trigger);
+    //serializeJson(outputjson, Serial);
+    serializeJson(outputjson, Serial1);
+    
     Serial.println("Trigger De-Activated");
     }
 

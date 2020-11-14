@@ -8,7 +8,7 @@ Work in progress. Arduino can send short messages to MQTT.
 To do:
 - [X] Get a basic concept working
 - [ ] Fix serial message length
-- [ ] Test MQTT from broker to Arduino
+- [X] Test MQTT from broker to Arduino
 - [ ] Get LED decoding working
 - [ ] Work out divider network for inputs to Arduino
 - [ ] Install and commission
@@ -182,7 +182,22 @@ NodeMCU with ESP-12E chip selected. Used Software serial to begin with but will 
 7. Set a web interface password if you so desire
 8. Back up your config
 
-### Commands
-TO active a relay, send an MQTT message to `cmnd/frontgate/sserialsend` with the payload of the number corresponding to output programmed in the gate.ino file.
+### Commands over `MQTT`
+TO active a relay, send an MQTT message to `cmnd/frontgate/serialsend` with the payload of the number corresponding to output programmed in the gate.ino file.
 
-For example, to activate `Lock Open On` send `cmnd/frontgate/sserialsend 3`. To deactivate `Lock Open On` send `cmnd/frontgate/sserialsend 4`. This activates and deactivates relay 2.
+For example, to activate `Lock Open On` send `cmnd/frontgate/serialsend 3`. To deactivate `Lock Open On` send `cmnd/frontgate/serialsend 4`. This activates and deactivates relay 2.
+
+Note: for software serial, use SSerialSend.
+
+| #   | Command                |
+| --- | ---------------------- |
+| 1   | lockposon              |
+| 2   | lockposoff             |
+| 3   | lockopenon             |
+| 4   | lockopenoff            |
+| 5   | triggeron              |
+| 6   |                        |
+| 7   | turnlighton            |
+| 8   | turnlightoff           |
+| 9   | fullstatusrequesttomcu |
+| 0   |                        |

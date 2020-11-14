@@ -66,7 +66,7 @@ void statusdecode() {
   //put the flashing LED code in here - use debounce library which can detect couble clicks
 }
 
-StaticJsonDocument<50> outputjson;
+
 // Manage outputs
 void lockposon(int8_t pin) {
   digitalWrite(pin, HIGH);

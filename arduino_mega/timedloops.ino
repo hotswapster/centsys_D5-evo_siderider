@@ -24,7 +24,7 @@ void tensec() {
       //Put 10 second update calls here-------------ᐯ
       light();
       fullstatusrequest(); 
-      fullstatusrequesttomcu();
+      //fullstatusrequesttomcu();
       //Put 10 second update calls here-------------ᐱ
       
       tenseclast = millis();

@@ -24,7 +24,7 @@ void fullstatusrequest(){
   statusjson["t"] = String(trigger);
 
   serializeJson(statusjson, Serial);
-  serializeJson(statusjson, Serial1);
+  //serializeJson(statusjson, Serial1);
   //serializeJson(statusjson, Serial1);
 }
 
@@ -61,7 +61,7 @@ void mcuserial() {
       case '5': triggeron(trig_pin); break;
       case '7': turnlighton(lights_pin); break;
       case '8': turnlightoff(lights_pin); break;
-      case '9': fullstatusrequest(); break;
+      case '9': fullstatusrequesttomcu(); break;
       }
       Serial.println(String(ser));
     }
