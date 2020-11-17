@@ -147,6 +147,7 @@ void loop() {
     }
 
   mcuserial();
+  showNewData();
 
 
   //Calculate cycle time
