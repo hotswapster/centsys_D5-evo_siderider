@@ -30,7 +30,7 @@
 */
 // test code for outputs
 void blink() {
-
+/*
   digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)
   Serial.println("LED ON");
   delay(relaydelay);                       // wait for a second
@@ -38,7 +38,7 @@ void blink() {
   Serial.println("LED OFF");
   delay(relaydelay);      // wait for a second
   
-  digitalWrite(lockinpos_pin, HIGH);    // turn the LED off by making the voltage LOW
+  digitalWrite(lockholiday, HIGH);    // turn the LED off by making the voltage LOW
   Serial.println("Relay 1 - Lock In Position - ON");
   delay(relaydelay);                       // wait for a second
   digitalWrite(lockinpos_pin, LOW);    // turn the LED off by making the voltage LOW
@@ -65,4 +65,5 @@ void blink() {
   digitalWrite(lights_pin, LOW);    // turn the LED off by making the voltage LOW
   Serial.println("Relay 4 - Lights Pin - OFF");
   delay(relaydelay);                       // wait for a second
+  */
 }

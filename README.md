@@ -11,7 +11,7 @@ To do:
 - [X] Test MQTT from broker to Arduino
 - [ ] Get LED decoding working
 - [ ] Work out divider network for inputs to Arduino
-- [ ] Create a reset for all locks
+- [X] Create a reset for all locks
 - [ ] Install and commission
 
 # Goals

@@ -28,10 +28,12 @@
   const int dong_pin = 27;
   const int lightsensor_pin = A0;
   //outputs
-  const int lockinpos_pin = 40; // serial 1 lock, 2 unlock
-  const int lockopen_pin = 41;  // serial 3 lock, 4 unlock
-  const int trig_pin = 42;      // serial 5 trigger
-  const int lights_pin = 43;    // serial 7 on, 8 off
+  const int lockholiday_pin = 40; //wired to Lck/Stp
+  const int lockopen_pin = 41;  //wired to Safety Close
+  const int trig_pin = 42;      //wired to Trg
+  const int lights_pin = 43;    //wired to Aux
+  const int trigped_pin = 44;   //wired to Ped
+  const int lockclosed_pin = 45;//wired to Safety Open
   
 
 //statuses
@@ -45,8 +47,11 @@
   bool gateclosed;              //used
   bool lightson;                //used
   bool lockedopen;              //used
-  bool lockedinpos;             //used
+  bool lockholiday;             //used
   bool trigger;                 //used
+  bool trigped;                 //used
+  bool lockclosed;              //used
+  bool lockinpos;              //used
   //from status led
   bool lightoverride;
   bool gateopening;
@@ -96,10 +101,11 @@ void setup() {
   pinMode(lightsensor_pin, INPUT);
 
   //for project - OUTPUTS
-  pinMode(lockinpos_pin,OUTPUT);
+  pinMode(lockholiday_pin,OUTPUT);
   pinMode(lockopen_pin,OUTPUT);
   pinMode(trig_pin,OUTPUT);
   pinMode(lights_pin,OUTPUT);
+  pinMode(lockclosed_pin, OUTPUT);
   
   timesinceboot = millis();// - boottime;
   Serial.println("Setup complete. Begin running program.");

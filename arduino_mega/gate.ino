@@ -68,20 +68,20 @@ void statusdecode() {
 
 
 // Manage outputs
-void lockposon(int8_t pin) {
+void lockholidayon(int8_t pin) {
   digitalWrite(pin, HIGH);
-  lockedinpos = true;
-  Serial.println("Lock in Position - locked");
-  outputjson["lockedinpos"] = String(lockedinpos);
+  lockholiday = true;
+  Serial.println("Holiday Lock Enabled");
+  outputjson["lockholiday"] = String(lockholiday);
   //serializeJson(outputjson, Serial);
   serializeJson(outputjson, Serial1);
 }
 
-void lockposoff(int8_t pin) {
+void lockholidayoff(int8_t pin) {
   digitalWrite(pin, LOW);
-  lockedinpos = false;
-  Serial.println("Lock in Position - unlocked");
-  outputjson["lockedinpos"] = String(lockedinpos);
+  lockholiday = false;
+  Serial.println("Lock HOliday Disabled");
+  outputjson["lockedholiday"] = String(lockholiday);
   //serializeJson(outputjson, Serial);
   serializeJson(outputjson, Serial1);
 }
@@ -133,4 +133,46 @@ void turnlightoff(int8_t pin) {
   outputjson["lightson"] = String(lightson);
   //serializeJson(outputjson, Serial);
   serializeJson(outputjson, Serial1);
+}
+
+void triggerped(int8_t pin) { //Turns on here. Turns off in void loop on main page due not not figuring out how to manage the timer.
+  triggertimer = millis();
+  digitalWrite(pin, HIGH);
+  trigger = true;
+    Serial.println("Pedestrian Trigger Activated");
+    
+  outputjson["triggerped"] = String(trigped);
+  //serializeJson(outputjson, Serial);
+  serializeJson(outputjson, Serial1);
+}
+
+void lockclosedon(int8_t pin) {
+  digitalWrite(pin, HIGH);
+  lockclosed = true;
+  Serial.println("Lock closed activated");
+  outputjson["lockclosed"] = String(lockclosed);
+  //serializeJson(outputjson, Serial);
+  serializeJson(outputjson, Serial1);
+}
+
+void lockclosedoff(int8_t pin) {
+  digitalWrite(pin, LOW);
+  lockclosed = false;
+  Serial.println("Lock closed deactivated");
+  outputjson["lockclosed"] = String(lockclosed);
+  //serializeJson(outputjson, Serial);
+  serializeJson(outputjson, Serial1);
+}
+
+
+void lockinposon() {
+  lockholidayon(lockholiday_pin);
+  lockopenon(lockopen_pin);
+  lockclosedon(lockclosed_pin);
+}
+
+void resetalllocks() {
+  lockholidayoff(lockholiday_pin);
+  lockopenoff(lockopen_pin);
+  lockclosedoff(lockclosed_pin);
 }
