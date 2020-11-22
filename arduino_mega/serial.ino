@@ -109,7 +109,7 @@ void serialcommands() {
  else if (String(receivedChars) == "lockclosedon") {lockclosedon(lockclosed_pin);; Serial.println("Lock in Closed position activated"); receivedChars[0] = '\0';} 
  else if (String(receivedChars) == "lockclosedoff") {lockclosedoff(lockclosed_pin);; Serial.println("Lock in Closed position activated"); receivedChars[0] = '\0';} 
  else if (String(receivedChars) == "lockinposon") {lockinposon();; Serial.println("Lock in position activated"); receivedChars[0] = '\0';} 
- else {Serial1.print("Command Unknown");}
+ else {outputjson["Command"] = String("Unknown"); serializeJson(outputjson, Serial1);}
 
  
  //add new serial receive commands here    
