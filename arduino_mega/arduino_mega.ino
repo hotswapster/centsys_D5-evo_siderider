@@ -72,6 +72,7 @@
   unsigned long cycletime = 0;   //timer for calculating cycle time
   unsigned long maxcycletime = 0;   //timer for calculating cycle time 
   float temperature;
+  int baud = 9600; //serial baud rate for communications - not programming
 
 void setup() {
 
@@ -84,7 +85,7 @@ void setup() {
   Serial.println("MIT License");
 
   //serial conneciton to nodemcu
-  Serial1.begin(115200);
+  Serial1.begin(baud);
 
     
   // put your setup code here, to run once:
