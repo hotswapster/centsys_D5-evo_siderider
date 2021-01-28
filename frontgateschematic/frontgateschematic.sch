@@ -1,0 +1,236 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A3 16535 11693
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L jaidan:KQ330F U?
+U 1 1 6012A32B
+P 2000 3000
+F 0 "U?" H 4078 3451 50  0000 L CNN
+F 1 "KQ330F" H 4078 3360 50  0000 L CNN
+F 2 "" H 2000 3000 50  0001 C CNN
+F 3 "" H 2000 3000 50  0001 C CNN
+	1    2000 3000
+	1    0    0    -1  
+$EndComp
+$Comp
+L jaidan:KQ330F U?
+U 1 1 6012AC75
+P 2000 9500
+F 0 "U?" H 4078 9951 50  0000 L CNN
+F 1 "KQ330F" H 4078 9860 50  0000 L CNN
+F 2 "" H 2000 9500 50  0001 C CNN
+F 3 "" H 2000 9500 50  0001 C CNN
+	1    2000 9500
+	1    0    0    -1  
+$EndComp
+$Comp
+L arduino:Arduino_Mega2560_Shield XA?
+U 1 1 6012BB94
+P 6400 3800
+F 0 "XA?" H 6400 1419 60  0000 C CNN
+F 1 "Arduino_Mega2560_Shield" H 6400 1313 60  0000 C CNN
+F 2 "" H 7100 6550 60  0001 C CNN
+F 3 "https://store.arduino.cc/arduino-mega-2560-rev3" H 7100 6550 60  0001 C CNN
+	1    6400 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Sensor_Temperature:DS18B20 U?
+U 1 1 6012E6CA
+P 11500 4900
+F 0 "U?" H 11270 4946 50  0000 R CNN
+F 1 "DS18B20" H 11270 4855 50  0000 R CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline" H 10500 4650 50  0001 C CNN
+F 3 "http://datasheets.maximintegrated.com/en/ds/DS18B20.pdf" H 11350 5150 50  0001 C CNN
+	1    11500 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 6012F6F1
+P 10650 4550
+F 0 "R?" H 10720 4596 50  0000 L CNN
+F 1 "R" H 10720 4505 50  0000 L CNN
+F 2 "" V 10580 4550 50  0001 C CNN
+F 3 "~" H 10650 4550 50  0001 C CNN
+	1    10650 4550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Sensor_Optical:LDR03 R?
+U 1 1 6012FFBA
+P 13300 4850
+F 0 "R?" H 13370 4896 50  0000 L CNN
+F 1 "LDR03" H 13370 4805 50  0000 L CNN
+F 2 "OptoDevice:R_LDR_10x8.5mm_P7.6mm_Vertical" V 13475 4850 50  0001 C CNN
+F 3 "http://www.elektronica-componenten.nl/WebRoot/StoreNL/Shops/61422969/54F1/BA0C/C664/31B9/2173/C0A8/2AB9/2AEF/LDR03IMP.pdf" H 13300 4800 50  0001 C CNN
+	1    13300 4850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 6013095A
+P 13250 4200
+F 0 "R?" H 13320 4246 50  0000 L CNN
+F 1 "R" H 13320 4155 50  0000 L CNN
+F 2 "" V 13180 4200 50  0001 C CNN
+F 3 "~" H 13250 4200 50  0001 C CNN
+	1    13250 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L nodemcu:NodeMCU_1.0_(ESP-12E) U?
+U 1 1 60131D4C
+P 8600 9150
+F 0 "U?" H 8600 10237 60  0000 C CNN
+F 1 "NodeMCU_1.0_(ESP-12E)" H 8600 10131 60  0000 C CNN
+F 2 "" H 8000 8300 60  0000 C CNN
+F 3 "" H 8000 8300 60  0000 C CNN
+	1    8600 9150
+	1    0    0    -1  
+$EndComp
+Entry Wire Line
+	7900 4650 8000 4750
+Wire Wire Line
+	7700 4650 7900 4650
+Entry Wire Line
+	7900 4750 8000 4850
+Entry Wire Line
+	7900 4850 8000 4950
+Entry Wire Line
+	7900 4950 8000 5050
+Wire Wire Line
+	7700 4750 7900 4750
+Wire Wire Line
+	7700 4850 7900 4850
+Wire Wire Line
+	7700 4950 7900 4950
+Entry Wire Line
+	8600 2000 8700 2100
+Entry Wire Line
+	8600 2100 8700 2200
+Entry Wire Line
+	8600 2200 8700 2300
+Entry Wire Line
+	8600 2300 8700 2400
+$Comp
+L jaidan:funduino4chrelay k?
+U 1 1 601702EC
+P 9450 2600
+F 0 "k?" V 7785 3812 50  0000 C CNN
+F 1 "funduino4chrelay" V 7876 3812 50  0000 C CNN
+F 2 "" H 8000 3800 50  0001 C CNN
+F 3 "" H 8000 3800 50  0001 C CNN
+	1    9450 2600
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9350 2500 9250 2500
+Wire Wire Line
+	9250 2500 9250 2600
+Wire Wire Line
+	9250 2600 9350 2600
+Entry Wire Line
+	9000 1850 9100 1950
+Entry Wire Line
+	9000 1750 9100 1850
+Entry Wire Line
+	4650 4900 4750 5000
+Entry Wire Line
+	4650 5550 4750 5650
+Wire Wire Line
+	5100 5650 4750 5650
+Wire Wire Line
+	5100 5050 4750 5050
+Wire Wire Line
+	4750 5050 4750 5000
+Wire Wire Line
+	9100 1850 9350 1850
+Wire Wire Line
+	9350 1850 9350 1900
+Wire Wire Line
+	9350 1950 9350 2000
+Wire Wire Line
+	9100 1950 9350 1950
+Entry Wire Line
+	4850 2050 4950 1950
+Entry Wire Line
+	4850 1950 4950 1850
+Entry Wire Line
+	3650 3650 3750 3750
+Entry Wire Line
+	3750 3650 3850 3750
+Wire Wire Line
+	3750 3100 3750 3650
+Wire Wire Line
+	3650 3100 3650 3650
+Wire Bus Line
+	4550 4000 3600 4000
+Wire Bus Line
+	3600 4000 3600 3500
+Entry Wire Line
+	3500 3400 3600 3500
+Entry Wire Line
+	3400 3400 3500 3500
+Entry Wire Line
+	3300 3400 3400 3500
+Connection ~ 3600 4000
+Wire Bus Line
+	3600 4000 3500 4000
+Wire Wire Line
+	3500 3400 3500 3100
+Wire Wire Line
+	3500 3100 3550 3100
+Wire Wire Line
+	3400 3400 3400 3100
+Wire Wire Line
+	3400 3100 3450 3100
+Wire Wire Line
+	3300 3400 3300 3100
+Wire Wire Line
+	3300 3100 3350 3100
+Entry Bus Bus
+	4550 4000 4650 4100
+Wire Wire Line
+	4950 1850 5100 1850
+Wire Wire Line
+	4950 1950 5100 1950
+Wire Wire Line
+	8700 2100 9350 2100
+Wire Wire Line
+	8700 2200 9350 2200
+Wire Wire Line
+	8700 2300 9350 2300
+Wire Wire Line
+	8700 2400 9350 2400
+Wire Bus Line
+	4650 6800 9000 6800
+Wire Bus Line
+	8000 3000 8600 3000
+Wire Bus Line
+	3750 3750 4850 3750
+Wire Bus Line
+	9000 1750 9000 6800
+Wire Bus Line
+	4650 4100 4650 6800
+Wire Bus Line
+	4850 1750 4850 3750
+Wire Bus Line
+	3350 3500 3600 3500
+Wire Bus Line
+	8000 3000 8000 5100
+Wire Bus Line
+	8600 2000 8600 3000
+$EndSCHEMATC
