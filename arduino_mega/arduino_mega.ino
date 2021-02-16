@@ -12,6 +12,7 @@
     // Pass the oneWire reference to DallasTemperature library:
     DallasTemperature sensors(&oneWire);
 
+// Remove MEGA and use NodeMCU Only
 
 
 //time to start
@@ -34,7 +35,7 @@
   const int lights_pin = 43;    //wired to Aux
   const int trigped_pin = 44;   //wired to Ped
   const int lockclosed_pin = 45;//wired to Safety Open
-  
+
 
 //statuses
   char gate_pos[9] = "unknown"; //open, opening, closed, closing
@@ -70,13 +71,13 @@
   unsigned long startcycletime = millis();   //timer for measuring cycle time
   unsigned long endcycletime = 0;   //timer for calculating cycle time
   unsigned long cycletime = 0;   //timer for calculating cycle time
-  unsigned long maxcycletime = 0;   //timer for calculating cycle time 
+  unsigned long maxcycletime = 0;   //timer for calculating cycle time
   float temperature;
   int baud = 9600; //serial baud rate for communications - not programming
 
 void setup() {
 
-      
+
   //serial over USB for program debugging
   Serial.begin(115200);
   Serial.println("");
@@ -87,7 +88,7 @@ void setup() {
   //serial conneciton to nodemcu
   Serial1.begin(baud);
 
-    
+
   // put your setup code here, to run once:
   //from blink
   pinMode(LED_BUILTIN, OUTPUT);
@@ -107,7 +108,7 @@ void setup() {
   pinMode(trig_pin,OUTPUT);
   pinMode(lights_pin,OUTPUT);
   pinMode(lockclosed_pin, OUTPUT);
-  
+
   timesinceboot = millis();// - boottime;
   Serial.println("Setup complete. Begin running program.");
   Serial.println("");
@@ -120,13 +121,13 @@ void setup() {
 
 void loop() {
   startcycletime = millis(); //measuring cpu cycle time
-      
+
   //blink for testing
   //blink();
 
   //Make serial active
 //  myserial();
-  
+
   //Monitor gate inputs
   gateinputs();
 
@@ -140,16 +141,16 @@ void loop() {
   thirtysec();
   tensec();
   fivesec();
-  
+
   //turn trigger off after trigger length finished
     if ( trigger == true && ((millis () - triggertimer) >= triggerlength)) {
     digitalWrite(trig_pin, LOW);
     trigger = false;
-    
+
     outputjson["trigger"] = String(trigger);
     //serializeJson(outputjson, Serial);
     serializeJson(outputjson, Serial1);
-    
+
     Serial.println("Trigger De-Activated");
     }
 
