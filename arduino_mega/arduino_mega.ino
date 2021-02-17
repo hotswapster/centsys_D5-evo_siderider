@@ -1,4 +1,5 @@
 
+
 //libraries
 // #include <SoftwareSerial.h>;
 #include <ArduinoJson.h>;
@@ -6,13 +7,14 @@
   //for temp sensors
     #include <OneWire.h>
     #include <DallasTemperature.h>
-    #define ONE_WIRE_BUS 2 //sensor data connected to pin 2
+    #define ONE_WIRE_BUS A2 //sensor data connected to pin 9
     // Create a new instance of the oneWire class to communicate with any OneWire device:
     OneWire oneWire(ONE_WIRE_BUS);
     // Pass the oneWire reference to DallasTemperature library:
     DallasTemperature sensors(&oneWire);
 
-// Remove MEGA and use NodeMCU Only
+// Change from MEGA to Nano
+// Unplug serial between controllers when connecting USB
 
 
 //time to start
@@ -21,20 +23,21 @@
 
 //assign names to pins
   //inputs
-  const int bb_pin = 22;
-  const int gc_pin = 23;
-  const int go_pin = 24;
-  const int stat_pin = 25;
-  const int ding_pin = 26;
-  const int dong_pin = 27;
+  const int bb_pin = 2;   //D2
+  const int gc_pin = 3;  //D3
+  const int go_pin = 4;   //D4
+  const int stat_pin = 5;  //D5
+  const int ding_pin = 6; //D6
+  const int dong_pin = 7;  //D7
   const int lightsensor_pin = A0;
+  const int temp_sensor = A2; // not used as defined above in line 97
   //outputs
-  const int lockholiday_pin = 40; //wired to Lck/Stp
-  const int lockopen_pin = 41;  //wired to Safety Close
-  const int trig_pin = 42;      //wired to Trg
-  const int lights_pin = 43;    //wired to Aux
-  const int trigped_pin = 44;   //wired to Ped
-  const int lockclosed_pin = 45;//wired to Safety Open
+  const int lockholiday_pin = 9; // D9 wired to Lck/Stp
+  const int lockopen_pin = 10;    // D10 wired to Safety Close
+  const int trig_pin = 11;        // D11 wired to Trg
+  const int lights_pin = 12;      // D12 wired to Aux
+  const int trigped_pin = A1;     // D13 wired to Ped
+  const int lockclosed_pin = 15;  //  wired to Safety Open
 
 
 //statuses
@@ -79,14 +82,14 @@ void setup() {
 
 
   //serial over USB for program debugging
-  Serial.begin(115200);
+  Serial.begin(57600);
   Serial.println("");
   Serial.println("<Arduino is ready>");
   Serial.println("https://github.com/hotswapster/centsys_D5-evo_siderider");
   Serial.println("MIT License");
 
   //serial conneciton to nodemcu
-  Serial1.begin(baud);
+  //Serial1.begin(baud);
 
 
   // put your setup code here, to run once:
@@ -148,8 +151,8 @@ void loop() {
     trigger = false;
 
     outputjson["trigger"] = String(trigger);
-    //serializeJson(outputjson, Serial);
-    serializeJson(outputjson, Serial1);
+    serializeJson(outputjson, Serial);
+    //serializeJson(outputjson, Serial1);
 
     Serial.println("Trigger De-Activated");
     }

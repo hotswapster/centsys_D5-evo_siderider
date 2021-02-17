@@ -49,7 +49,7 @@ void fullstatusrequesttomcu(){ //send multiple times as nodemcu only accepts 64 
   statusjson["triggerped"] = String(trigped);
   statusjson["lockclosed"] = String(lockclosed);
   statusjson["lockinpos"] = String(lockinpos);
-  serializeJson(statusjson, Serial1);
+  serializeJson(statusjson, Serial);
 }
 
 
@@ -59,14 +59,15 @@ char receivedChars[numChars]; // an array to store the received data
 
 boolean newData = false;
 
+
 void mcuserial() {
-  if (Serial1.available() > 0){
+  if (Serial.available() > 0){ //was Serial1
      static byte ndx = 0;
      char endMarker = '\n';
      char rc;
 
-     while (Serial1.available() > 0 && newData == false) {
-     rc = Serial1.read();
+     while (Serial.available() > 0 && newData == false) { //was Serial1
+     rc = Serial.read();//was Serial1
      if (rc != endMarker) {
       receivedChars[ndx] = rc;
       ndx++;
@@ -96,20 +97,20 @@ void showNewData() {
 }
 
 void serialcommands() {
- if (String(receivedChars) == "lockholidayon") {lockholidayon(lockholiday_pin); Serial.println("Holiday Lock Command Activated"); receivedChars[0] = '\0';}
- else if (String(receivedChars) == "lockholidayoff") {lockholidayoff(lockholiday_pin); Serial.println("Holiday Lock Command Deactivated"); receivedChars[0] = '\0';}
- else if (String(receivedChars) == "lockopenon") {lockopenon(lockopen_pin); Serial.println("Lock Open Activated"); receivedChars[0] = '\0';}
- else if (String(receivedChars) == "lockopenoff") {lockopenoff(lockopen_pin); Serial.println("Lock Open Deactivated"); receivedChars[0] = '\0';}
- else if (String(receivedChars) == "triggeron") {triggeron(trig_pin);; Serial.println("Gate Open/Close Command Triggered"); receivedChars[0] = '\0';}
- else if (String(receivedChars) == "lighton") {turnlighton(lights_pin); Serial.println("Lights turned on"); receivedChars[0] = '\0';}
- else if (String(receivedChars) == "lightoff") {turnlightoff(lights_pin); Serial.println("Lights turned off"); receivedChars[0] = '\0';}
- else if (String(receivedChars) == "statusrequest") {fullstatusrequesttomcu(); Serial.println("Sending Status"); receivedChars[0] = '\0';}
- else if (String(receivedChars) == "resetlocks") {resetalllocks(); Serial.println("Locks disabled, returned to AUTO"); receivedChars[0] = '\0';}
- else if (String(receivedChars) == "triggerped") {triggerped(trigped_pin);; Serial.println("Pedestrian Gate Open/Close Command Triggered"); receivedChars[0] = '\0';}
- else if (String(receivedChars) == "lockclosedon") {lockclosedon(lockclosed_pin);; Serial.println("Lock in Closed position activated"); receivedChars[0] = '\0';} 
- else if (String(receivedChars) == "lockclosedoff") {lockclosedoff(lockclosed_pin);; Serial.println("Lock in Closed position activated"); receivedChars[0] = '\0';} 
- else if (String(receivedChars) == "lockinposon") {lockinposon();; Serial.println("Lock in position activated"); receivedChars[0] = '\0';} 
- else {outputjson["Command"] = String("Unknown"); serializeJson(outputjson, Serial1);}
+ if (String(receivedChars) == "lockholidayon") {lockholidayon(lockholiday_pin); /*Serial.println("Holiday Lock Command Activated");*/ receivedChars[0] = '\0';}
+ else if (String(receivedChars) == "lockholidayoff") {lockholidayoff(lockholiday_pin); /*Serial.println("Holiday Lock Command Deactivated");*/ receivedChars[0] = '\0';}
+ else if (String(receivedChars) == "lockopenon") {lockopenon(lockopen_pin); /*Serial.println("Lock Open Activated");*/ receivedChars[0] = '\0';}
+ else if (String(receivedChars) == "lockopenoff") {lockopenoff(lockopen_pin); /*Serial.println("Lock Open Deactivated");*/ receivedChars[0] = '\0';}
+ else if (String(receivedChars) == "triggeron") {triggeron(trig_pin);; /*Serial.println("Gate Open/Close Command Triggered");*/ receivedChars[0] = '\0';}
+ else if (String(receivedChars) == "lighton") {turnlighton(lights_pin); /*Serial.println("Lights turned on");*/ receivedChars[0] = '\0';}
+ else if (String(receivedChars) == "lightoff") {turnlightoff(lights_pin); /*Serial.println("Lights turned off");*/ receivedChars[0] = '\0';}
+ else if (String(receivedChars) == "statusrequest") {fullstatusrequesttomcu(); /*Serial.println("Sending Status");*/ receivedChars[0] = '\0';}
+ else if (String(receivedChars) == "resetlocks") {resetalllocks(); /*Serial.println("Locks disabled, returned to AUTO");*/ receivedChars[0] = '\0';}
+ else if (String(receivedChars) == "triggerped") {triggerped(trigped_pin);; /*Serial.println("Pedestrian Gate Open/Close Command Triggered");*/ receivedChars[0] = '\0';}
+ else if (String(receivedChars) == "lockclosedon") {lockclosedon(lockclosed_pin);; /*Serial.println("Lock in Closed position activated");*/ receivedChars[0] = '\0';} 
+ else if (String(receivedChars) == "lockclosedoff") {lockclosedoff(lockclosed_pin);; /*Serial.println("Lock in Closed position activated");*/ receivedChars[0] = '\0';} 
+ else if (String(receivedChars) == "lockinposon") {lockinposon();; /*Serial.println("Lock in position activated");*/ receivedChars[0] = '\0';} 
+ else {outputjson["Command"] = String("Unknown"); serializeJson(outputjson, Serial);} //was Serial1
 
  
  //add new serial receive commands here    
